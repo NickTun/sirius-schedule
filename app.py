@@ -4,7 +4,7 @@ import requests, time, json
 
 endpoint_record = "https://my.sirius.online/api/activity/v0/schedule/student/record"
 endpoint_subscribe = "https://my.sirius.online/api/activity/v0/schedule/student/record/subscribe"
-headers = {"Authorization":"Bearer eyJhbGciOiJQUzUxMiJ9.eyJtaWRkbGVOYW1lIjpudWxsLCJpYXQiOjEuNzE5ODUxNjc3NDI3ODMxOTUxZTksImVtYWlsIjoibmlrb2xhZXZza3kuaWdvci5hQGdtYWlsLmNvbSIsImZpcnN0TmFtZSI6ItCY0LPQvtGA0YwiLCJwYXJlbnRDb2RlIjoiTktwOTFNbktLTVI4IiwiaWQiOiIxMDAxMjAwODA1MTAwNDY1MDkiLCJyb2xlcyI6WyJub29SVyJdLCJleHAiOjEuNzIwNDU2NDc3NDI3ODMxOTUxZTksImxhc3ROYW1lIjoi0J3QuNC60L7Qu9Cw0LXQstGB0LrQuNC5In0.wVPYQYalrOE2pjlXGsv6zmNLHYuFpDxCZov0sv1MHynmZt9sd5DSR-SLUk8C6F0Pw9SYQhMqykwT0Bfy2G0pap77sUV2ftQ4zsddT1RMGHC1y65GcbpAE0Fq2MkQOKqMLYfxrso29emD4xKC8u-T37sfBUxw1FMsyZcR_j5Squ7AQtV5km897mPPs-pHF-Uv4dcsdOxCUY4zao8di71EvKP5cHWhP8D9PCkjyx33XlEVFdiduf4gzY_4lpTgqPDP2u19VOPt56y3UhuBwXB-Ry3RDIeg23yyG1kJtSDCa8qKEyFvY1nyg3sG4EBMpNC_19wx67UgGdtEwGVOIPtOkg",
+headers = {"Authorization":"Bearer ",
         'Content-type':'application/json', 
         'Accept':'application/json'}
 now = datetime.now().astimezone(timezone.utc)
