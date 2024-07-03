@@ -21,8 +21,8 @@ print('Обработка данных...')
 
 driver.get("https://auth.sirius.online")
 driver.find_element(By.XPATH, "//*[text()[contains(., 'По паролю')]]").click()
-driver.find_element("name", "email").send_keys('nikolaevsky.igor.a@gmail.com')
-driver.find_element("name", "password").send_keys('Medgaw-6vuwca-qarbyb')
+driver.find_element("name", "email").send_keys(login)
+driver.find_element("name", "password").send_keys(password)
 driver.find_element(By.XPATH, "//*[text()[contains(., 'Войти')]]").click()
 
 time.sleep(15)
