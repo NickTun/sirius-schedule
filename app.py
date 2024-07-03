@@ -1,17 +1,44 @@
 from datetime import datetime
 from datetime import timezone
 import requests, time, json
+from urllib.parse import urlparse
+from urllib.parse import parse_qs
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.firefox.options import Options
+
+options = Options()
+options.add_argument("--headless")
+driver = webdriver.Firefox(options=options)
 
 endpoint_record = "https://my.sirius.online/api/activity/v0/schedule/student/record"
 endpoint_subscribe = "https://my.sirius.online/api/activity/v0/schedule/student/record/subscribe"
-headers = {"Authorization":"Bearer ",
-        'Content-type':'application/json', 
-        'Accept':'application/json'}
-now = datetime.now().astimezone(timezone.utc)
-today8am = now.replace(hour=20, minute=45, second=0, microsecond=0)
 
-r = requests.get(endpoint_record, headers=headers).json()
-events = r['success']
+login = input("Введите электронную почту: ")
+password = input("Введите пароль: ")
+
+print('Обработка данных...')
+
+driver.get("https://auth.sirius.online")
+driver.find_element(By.XPATH, "//*[text()[contains(., 'По паролю')]]").click()
+driver.find_element("name", "email").send_keys('nikolaevsky.igor.a@gmail.com')
+driver.find_element("name", "password").send_keys('Medgaw-6vuwca-qarbyb')
+driver.find_element(By.XPATH, "//*[text()[contains(., 'Войти')]]").click()
+
+time.sleep(15)
+
+token = driver.execute_script("return window.localStorage;")['AuthToken']
+
+driver.quit()
+
+headers = {
+    'Authorization': 'Bearer ' + token,
+    'Content-type':'application/json', 
+    'Accept':'application/json'
+}
+
+record = requests.get(endpoint_record, headers=headers).json()
+events = record['success']
 eventlist = []
 index = 0
 for day in events:
